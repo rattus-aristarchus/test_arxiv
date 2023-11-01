@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "test-arxiv"
+version = "0.1.0"
+description = ""
+authors = ["rattus-aristarchus <lankin.m.a@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.4.3"
+selenium = "4.11.2"
+selene = "2.0.0rc4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
