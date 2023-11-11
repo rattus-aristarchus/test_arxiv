@@ -1,10 +1,10 @@
 from selene import browser, have, command
 
 
-class MainPage:
+class AdvancedSearchPage:
 
     def __init__(self):
-        self.url = "https://arxiv.org"
+        self.url = "https://arxiv.org/search/advanced"
 
     def open(self):
         browser.open(self.url)
