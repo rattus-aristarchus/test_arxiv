@@ -16,3 +16,9 @@ allure-pytest = "2.13.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--clean-alluredir",
+    "--alluredir=tests/allure-results"
+]
