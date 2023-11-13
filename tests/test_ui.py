@@ -1,6 +1,12 @@
-from pages.main_page import MainPage
+import allure
+from allure_commons.types import Severity
 
+from src.pages.main_page import MainPage
 
+@allure.tag("UI")
+@allure.severity(severity_level=Severity.CRITICAL)
+# @allure.label("owner", 'lankinma')
+@allure.feature("main page")
 def test_main(setup_browser):
     page = MainPage()
     page.open()
