@@ -7,6 +7,12 @@ from selenium.webdriver.chrome.options import Options
 import dotenv
 
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+RES_DIR = os.path.join(BASE_DIR, "resources")
+SCHEMAS_DIR = os.path.join(RES_DIR, "xml_schemas")
+QUERY_XSD = os.path.join(SCHEMAS_DIR, "search_query.xsd")
+
+
 @pytest.fixture(scope="session", autouse=True)
 def load_env():
     dotenv.load_dotenv()
