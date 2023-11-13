@@ -12,8 +12,6 @@ selenium = "4.11.2"
 selene = "2.0.0rc4"
 python-dotenv = "0.20.0"
 allure-pytest = "2.13.2"
-requests = "2.31.0"
-lxml = "4.9.3"
 
 [build-system]
 requires = ["poetry-core"]
@@ -22,5 +20,5 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 addopts = [
     "--clean-alluredir",
-    "--alluredir=allure-results"
+    "--alluredir=tests/allure-results"
 ]
