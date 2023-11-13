@@ -7,6 +7,7 @@ from src.pages.main_page import MainPage
 @allure.severity(severity_level=Severity.CRITICAL)
 # @allure.label("owner", 'lankinma')
 @allure.feature("main page")
+@allure.title("Open the main page")
 def test_main(setup_browser):
     page = MainPage()
     page.open()
