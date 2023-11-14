@@ -48,25 +48,38 @@ def test_search_query():
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("query")
-@allure.title("The max_results parameter should work")
-@pytest.mark.parametrize("max_res", [20, 0, sys.maxsize])
+@allure.title("Check acceptable values for max_results")
+@pytest.mark.parametrize("max_res", ["20", "0"])
 # for performance reasons, arxiv's maximum number of results
 # returned from a single call (max_results) is limited to 30000,
 # and they frown upon calls of over 1000
 def test_query_max_results(max_res):
-    if max_res == sys.maxsize:
-        expected_code = 400
-    else:
-        expected_code = 200
-
     with allure.step("send a request"):
-        response = query(name=NAME, max_res=str(max_res))
+        response = query(name=NAME, max_res=max_res)
         attach_code(response.status)
 
     with allure.step("check status code"):
-        assert response.status == expected_code
+        assert response.status == 200
     with allure.step("check there are no more results than max_results"):
-        assert len(response.entries) <= max_res
+        assert len(response.entries) <= int(max_res)
+
+
+@allure.tag("API")
+@allure.severity(severity_level=Severity.NORMAL)
+@allure.label("owner", 'lankinma')
+@allure.feature("query")
+@allure.title("Check unacceptable values for max_results")
+@pytest.mark.parametrize("max_res", [str(sys.maxsize), "notaninteger"])
+# for performance reasons, arxiv's maximum number of results
+# returned from a single call (max_results) is limited to 30000,
+# and they frown upon calls of over 1000
+def test_query_max_results(max_res):
+    with allure.step("send a request"):
+        response = query(name=NAME, max_res=max_res)
+        attach_code(response.status)
+
+    with allure.step("check status code"):
+        assert response.status == 400
 
 
 @allure.tag("API")
@@ -96,10 +109,11 @@ def test_query_start():
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("query")
-@allure.title("The start parameter should not accept negative numbers")
-def test_query_start():
+@allure.title("The start parameter should not accept bad values")
+@pytest.mark.parametrize("start", ["-1", "notaninteger"])
+def test_query_start(start):
     with allure.step("send the request"):
-        response = query(name=NAME, start="-1", max_res="1")
+        response = query(name=NAME, start=start, max_res="1")
         attach_code(response.status)
 
     with allure.step("check status code"):
