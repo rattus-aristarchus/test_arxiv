@@ -86,7 +86,7 @@ def test_query_max_results(max_res):
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("query")
-@allure.title("The start parameter should work")
+@allure.title("The start parameter should change the retrieved entry")
 def test_query_start():
     with allure.step("send first request"):
         response = query(name=NAME, start="0", max_res="1")
@@ -109,7 +109,7 @@ def test_query_start():
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("query")
-@allure.title("The start parameter should not accept bad values")
+@allure.title("Check unacceptable values for the start parameter")
 @pytest.mark.parametrize("start", ["-1", "notaninteger"])
 def test_query_start(start):
     with allure.step("send the request"):
