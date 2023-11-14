@@ -19,17 +19,22 @@ QUERY_MAX_RES = "query?search_query=all:electron&max_results="
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("query")
-@allure.title("Search query response shoudl be well-formed")
+@allure.title("Search query response should be well-formed")
 def test_search_query():
-    schema_doc = etree.parse(QUERY_XSD)
-    schema = etree.XMLSchema(schema_doc)
-    url = API_URL + "query?search_query=all:electron"
+    with allure.step("prepare schema"):
+        schema_doc = etree.parse(QUERY_XSD)
+        schema = etree.XMLSchema(schema_doc)
 
-    response = requests.get(url)
-    xml_doc = etree.parse(BytesIO(bytes(response.text, 'utf-8')))
+    with allure.step("send a request"):
+        url = API_URL + "query?search_query=all:electron"
+        response = requests.get(url)
+    with allure.step("parse the response"):
+        xml_doc = etree.parse(BytesIO(bytes(response.text, 'utf-8')))
 
-    assert response.status_code == 200
-    assert schema.validate(xml_doc)
+    with allure.step("check status code"):
+        assert response.status_code == 200
+    with allure.step("validate the xml with the schema"):
+        assert schema.validate(xml_doc)
 
 
 @allure.tag("API")
@@ -39,9 +44,11 @@ def test_search_query():
 @allure.title("The max_results parameter should work")
 @pytest.mark.parametrize("max_res", [20, 0, sys.maxsize])
 def test_query_max_results(max_res):
-    url = API_URL + QUERY_MAX_RES + str(max_res)
+    with allure.step("send a request"):
+        url = API_URL + QUERY_MAX_RES + str(max_res)
+        response = feedparser.parse(url)
 
-    response = feedparser.parse(url)
-
-    assert response.status == 200
-    assert len(response.entries) <= max_res
+    with allure.step("check status code"):
+        assert response.status == 200
+    with allure.step("check there are no more results than max_results"):
+        assert len(response.entries) <= max_res
