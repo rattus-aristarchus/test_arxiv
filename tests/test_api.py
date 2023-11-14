@@ -35,28 +35,20 @@ def attach_code(code, name="status code"):
     allure.attach(str(code), name=name, attachment_type=AttachmentType.TEXT)
 
 
-"""
 @allure.tag("API")
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("query")
-@allure.title("Search query response should be well-formed")
+@allure.title("Query response should be well-formed xml")
 def test_search_query():
-    with allure.step("prepare schema"):
-        schema_doc = etree.parse(QUERY_XSD)
-        schema = etree.XMLSchema(schema_doc)
-
     with allure.step("send a request"):
-        url = QUERY + BY_NAME + NAME
-        response = requests.get(url)
-    with allure.step("parse the response"):
-        xml_doc = etree.parse(BytesIO(bytes(response.text, 'utf-8')))
+        response = query(NAME)
+        attach_code(response.status)
 
     with allure.step("check status code"):
-        assert response.status_code == 200
-    with allure.step("validate the xml with the schema"):
-        assert schema.validate(xml_doc)
-"""
+        assert response.status == 200
+    with allure.step("make sure the xml is well-formed"):
+        assert response.bozo == 0
 
 
 @allure.tag("API")
@@ -115,7 +107,7 @@ def test_query_start():
 def test_query_start():
     with allure.step("send the request"):
         response = query(name=NAME, start="-1", max_res="1")
-        attach_code()
+        attach_code(response.status)
 
     with allure.step("check status code"):
         assert response.status == 400
