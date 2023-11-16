@@ -6,7 +6,7 @@ authors = ["rattus-aristarchus <lankin.m.a@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 pytest = "^7.4.3"
 selenium = "4.11.2"
 selene = "2.0.0rc4"
