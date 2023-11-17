@@ -6,6 +6,21 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
+QUERY = "electron"
+BAD_QUERY = "asdasdlsklalkjasdfljka"
+
+
+@pytest.fixture(scope="function")
+def local_browser():
+    browser.config.driver = webdriver.Chrome()
+    browser.config.window_width = 1600
+    browser.config.window_height = 1200
+
+    yield
+
+    browser.close()
+
+
 @pytest.fixture(scope="session")
 def setup_browser(request):
     browser.config.window_width = 1600

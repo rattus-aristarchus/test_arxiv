@@ -1,14 +1,7 @@
-from selene import browser, have, command
+from src.pages.page import Page
 
 
-class MainPage:
+class MainPage(Page):
 
     def __init__(self):
         self.url = "https://arxiv.org"
-
-    def open(self):
-        browser.open(self.url)
-        browser.all("[id^=google_ads][id$=container__]").with_(timeout=10).wait_until(
-            have.size_greater_than_or_equal(3)
-        )
-        browser.all('[id^=google_ads][id$=container__]').perform(command.js.remove)
