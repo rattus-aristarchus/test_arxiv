@@ -7,6 +7,7 @@ from src.pages.advanced_search_page import AdvancedSearchPage
 
 QUERY = "electron"
 BAD_QUERY = "asdasdlsklalkjasdfljka"
+QUERY_ECON = "cycles"
 NAME_WO_DIACRITICS = "Rontgen"
 NAME_WITH_DIACRITICS = "Röntgen"
 
@@ -26,7 +27,7 @@ def test_works(setup_browser, search_term):
     page.search()
 
     if search_term == QUERY:
-        page.should_have_results()
+        page.results_should_exist()
     elif search_term == BAD_QUERY:
         page.should_not_have_results()
 
@@ -37,7 +38,7 @@ def test_works(setup_browser, search_term):
 @allure.feature("advanced search")
 @allure.story("search by field")
 @allure.title("Diacritics should be automatically searched for authors")
-def test_diacritics(local_browser):
+def test_diacritics(setup_browser):
     page = AdvancedSearchPage()
     page.open()
 
@@ -46,3 +47,39 @@ def test_diacritics(local_browser):
     page.search()
 
     page.results_should_have_author(NAME_WITH_DIACRITICS)
+
+
+@allure.tag("UI")
+@allure.severity(severity_level=Severity.NORMAL)
+@allure.label("owner", 'lankinma')
+@allure.feature("advanced search")
+@allure.story("search with subject")
+@allure.title("All results should have the selected subject tag")
+def test_tag_inclusive(setup_browser):
+    page = AdvancedSearchPage()
+    page.open()
+
+    page.fill_search_term(QUERY)
+    page.set_subject("Economics")
+    page.set_include_cross_listed()
+    page.search()
+
+    page.all_results_should_have_tag("econ")
+
+
+@allure.tag("UI")
+@allure.severity(severity_level=Severity.NORMAL)
+@allure.label("owner", 'lankinma')
+@allure.feature("advanced search")
+@allure.story("search with subject")
+@allure.title("All results should have only the selected subject tag")
+def test_tag_exclusive(setup_browser):
+    page = AdvancedSearchPage()
+    page.open()
+
+    page.fill_search_term(QUERY_ECON)
+    page.set_subject("Economics")
+    page.set_exclude_cross_listed()
+    page.search()
+
+    page.all_results_should_only_have_tag("econ")
