@@ -11,6 +11,10 @@ QUERY_ECON = "cycles"
 NAME_WO_DIACRITICS = "Rontgen"
 NAME_WITH_DIACRITICS = "Röntgen"
 
+VALID_YEARS = ["1991"]
+INVALID_YEARS = ["1990", "1000", "-1", "99999999"]
+YEARS = VALID_YEARS + INVALID_YEARS
+
 
 @allure.tag("UI")
 @allure.severity(severity_level=Severity.CRITICAL)
@@ -72,7 +76,7 @@ def test_tag_inclusive(setup_browser):
 @allure.label("owner", 'lankinma')
 @allure.feature("advanced search")
 @allure.story("search with subject")
-@allure.issue("https://jira.autotests.cloud", name="HOMEWORK-963")
+@allure.issue("https://jira.autotests.cloud/browse/HOMEWORK-963", name="HOMEWORK-963")
 @allure.title("All results should have only the selected subject tag")
 def test_tag_exclusive(setup_browser):
     page = AdvancedSearchPage()
@@ -84,3 +88,41 @@ def test_tag_exclusive(setup_browser):
     page.search()
 
     page.all_results_should_only_have_tag("econ")
+
+
+@allure.tag("UI")
+@allure.severity(severity_level=Severity.NORMAL)
+@allure.label("owner", 'lankinma')
+@allure.feature("advanced search")
+@allure.story("search by date")
+@allure.title("Only results from given year should be shown")
+def test_year_exclusive(setup_browser):
+    page = AdvancedSearchPage()
+    page.open()
+
+    page.fill_search_term(QUERY)
+    page.set_year("2020")
+    page.search()
+
+    page.all_results_should_only_have_year("2020")
+
+
+@allure.tag("UI")
+@allure.severity(severity_level=Severity.NORMAL)
+@allure.label("owner", 'lankinma')
+@allure.feature("advanced search")
+@allure.story("search by date")
+@allure.title("The year field should not accept invalid date values")
+@pytest.mark.parametrize("year", YEARS)
+def test_warning_for_bad_year_values(setup_browser, year):
+    page = AdvancedSearchPage()
+    page.open()
+
+    page.fill_search_term(QUERY)
+    page.set_year(year)
+    page.search()
+
+    if year in INVALID_YEARS:
+        page.should_display_warning()
+    elif year in VALID_YEARS:
+        page.should_not_have_results()

@@ -46,6 +46,11 @@ class AdvancedSearchPage(Page):
     def set_exclude_cross_listed(self):
         browser.element("#classification-include_cross_list-1").click()
 
+    @allure.step("under 'Date', set the 'Specific year' option to {year}")
+    def set_year(self, year):
+        browser.element("#date-filter_by-2").click()
+        browser.element("#date-year").type(year)
+
     @allure.step("click the 'search' button")
     def search(self):
         browser.element(".button.is-link.is-medium").click()
@@ -54,9 +59,10 @@ class AdvancedSearchPage(Page):
     def results_should_exist(self):
         browser.element(".arxiv-result").should(be.existing)
 
-    @allure.step("there should be no results on the results page")
+    @allure.step("the results page should appear, but with no results")
     def should_not_have_results(self):
         browser.element(".arxiv-result").should(be.absent)
+        browser.element('[class="title is-clearfix"]').should(have.text("no results"))
 
     # TODO: this should react to any authors field, not just the first one
     @allure.step("any of the 'authors' field of results should contain {author}")
@@ -73,3 +79,12 @@ class AdvancedSearchPage(Page):
         for tags in browser.all(".tags.is-inline-block"):
             for tag_element in tags.all(".tag.is-small.tooltip.is-tooltip-top"):
                 tag_element.should(have.text(tag))
+
+    @allure.step("the 'Submitted' fields should only contain year {year}")
+    def all_results_should_only_have_year(self, year):
+        for result in browser.all(".arxiv-result"):
+            result.element('p.is-size-7').should(have.text(year))
+
+    @allure.step("a warning should be displayed")
+    def should_display_warning(self):
+        browser.element('div.help.is-warning').should(be.present)
