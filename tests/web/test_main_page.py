@@ -10,9 +10,8 @@ from src.pages.main_page import MainPage
 @allure.feature("main page")
 @allure.title("Main page should open")
 def test_main(setup_browser):
-    with allure.step("open main page"):
-        page = MainPage()
-        page.open()
+    page = MainPage()
+    page.open()
 
 
 

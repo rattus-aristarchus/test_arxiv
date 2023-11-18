@@ -6,10 +6,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-QUERY = "electron"
-BAD_QUERY = "asdasdlsklalkjasdfljka"
-
-
 @pytest.fixture(scope="function")
 def local_browser():
     browser.config.driver = webdriver.Chrome()
