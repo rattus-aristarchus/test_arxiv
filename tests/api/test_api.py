@@ -31,7 +31,7 @@ def attach_code(code, name="status code"):
 @allure.tag("API")
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
-@allure.feature("query")
+@allure.feature("query method")
 @allure.title("Query response should be well-formed xml")
 def test_search_query():
     with allure.step("send a request"):
@@ -47,7 +47,7 @@ def test_search_query():
 @allure.tag("API")
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
-@allure.feature("query")
+@allure.feature("query method")
 @allure.title("Check acceptable values for max_results")
 @pytest.mark.parametrize("max_res", ["20", "0"])
 # for performance reasons, arxiv's maximum number of results
@@ -67,7 +67,7 @@ def test_query_max_results(max_res):
 @allure.tag("API")
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
-@allure.feature("query")
+@allure.feature("query method")
 @allure.title("Check unacceptable values for max_results")
 @pytest.mark.parametrize("max_res", [str(sys.maxsize), "notaninteger"])
 # for performance reasons, arxiv's maximum number of results
@@ -85,7 +85,7 @@ def test_query_max_results(max_res):
 @allure.tag("API")
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
-@allure.feature("query")
+@allure.feature("query method")
 @allure.title("The start parameter should change the retrieved entry")
 def test_query_start():
     with allure.step("send first request"):
@@ -108,7 +108,7 @@ def test_query_start():
 @allure.tag("API")
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
-@allure.feature("query")
+@allure.feature("query method")
 @allure.title("Check unacceptable values for the start parameter")
 @pytest.mark.parametrize("start", ["-1", "notaninteger"])
 def test_query_start(start):
@@ -123,7 +123,7 @@ def test_query_start(start):
 @allure.tag("API")
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
-@allure.feature("query")
+@allure.feature("query method")
 @allure.title("The id_list parameter should work")
 def test_id_list():
     with allure.step("send the request"):
@@ -140,7 +140,7 @@ def test_id_list():
 @allure.tag("API")
 @allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
-@allure.feature("query")
+@allure.feature("query method")
 @allure.title("The id_list parameter should work with query by name")
 def test_id_list_with_name():
     with allure.step("send the request"):

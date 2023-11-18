@@ -1,5 +1,4 @@
-from selene import browser, have, be, by
-from selene.support.shared.jquery_style import s
+from selene import browser, have, be
 import allure
 
 from src.pages.page import Page
