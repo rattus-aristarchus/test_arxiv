@@ -72,6 +72,7 @@ def test_tag_inclusive(setup_browser):
 @allure.label("owner", 'lankinma')
 @allure.feature("advanced search")
 @allure.story("search with subject")
+@allure.issue("https://jira.autotests.cloud/browse/HOMEWORK-963")
 @allure.title("All results should have only the selected subject tag")
 def test_tag_exclusive(setup_browser):
     page = AdvancedSearchPage()
