@@ -20,7 +20,6 @@ YEARS = VALID_YEARS + INVALID_YEARS
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("advanced search")
-@allure.story("search by field")
 @allure.title("Advanced search works")
 @pytest.mark.parametrize("search_term", [QUERY, BAD_QUERY])
 def test_works(setup_browser, search_term):
@@ -41,7 +40,7 @@ def test_works(setup_browser, search_term):
 @allure.label("owner", 'lankinma')
 @allure.feature("advanced search")
 @allure.story("search by field")
-@allure.title("Diacritics should be automatically searched for authors")
+@allure.title("Diacritic variants are automatically searched for authors")
 def test_diacritics(setup_browser):
     page = AdvancedSearchPage()
     page.open()
@@ -58,7 +57,7 @@ def test_diacritics(setup_browser):
 @allure.label("owner", 'lankinma')
 @allure.feature("advanced search")
 @allure.story("search with subject")
-@allure.title("All results should have the selected subject tag")
+@allure.title("All results have selected tag if 'Include cross-listed papers'")
 def test_tag_inclusive(setup_browser):
     page = AdvancedSearchPage()
     page.open()
@@ -77,7 +76,7 @@ def test_tag_inclusive(setup_browser):
 @allure.feature("advanced search")
 @allure.story("search with subject")
 @allure.issue("https://jira.autotests.cloud/browse/HOMEWORK-963", name="HOMEWORK-963")
-@allure.title("All results should have only the selected subject tag")
+@allure.title("Results have only the selected tag if 'Exclude cross-listed papers'")
 def test_tag_exclusive(setup_browser):
     page = AdvancedSearchPage()
     page.open()
@@ -95,7 +94,7 @@ def test_tag_exclusive(setup_browser):
 @allure.label("owner", 'lankinma')
 @allure.feature("advanced search")
 @allure.story("search by date")
-@allure.title("Only results from given year should be shown")
+@allure.title("With 'Specific year', only that year's papers are shown")
 def test_year_exclusive(setup_browser):
     page = AdvancedSearchPage()
     page.open()
@@ -112,7 +111,7 @@ def test_year_exclusive(setup_browser):
 @allure.label("owner", 'lankinma')
 @allure.feature("advanced search")
 @allure.story("search by date")
-@allure.title("The year field should not accept invalid date values")
+@allure.title("The year field does not accept invalid date values")
 @pytest.mark.parametrize("year", YEARS)
 def test_warning_for_bad_year_values(setup_browser, year):
     page = AdvancedSearchPage()

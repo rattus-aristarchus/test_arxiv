@@ -15,18 +15,18 @@ MISWRITTEN_ID = "hep-th/99120120000000000"
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("main page")
-@allure.title("Main page should open")
+@allure.title("Main page")
 def test_main(setup_browser):
     page = MainPage()
     page.open()
 
 
 @allure.tag("UI")
-@allure.severity(severity_level=Severity.CRITICAL)
+@allure.severity(severity_level=Severity.NORMAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("simple search")
 @allure.story("search by paper id")
-@allure.title("Simple search should direct straight to paper when given its id")
+@allure.title("Simple search directs straight to paper when given its id")
 @pytest.mark.parametrize("query", [PAPER_ID, BAD_ID, MISWRITTEN_ID])
 def test_search_by_id(setup_browser, query):
     page = MainPage()

@@ -29,7 +29,7 @@ XPATH_SEARCH_FIELD = ("/hierarchy/android.widget.FrameLayout/android.widget.Line
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("settings")
-@allure.title("the settings page should open")
+@allure.title("The settings page opens")
 def test_settings_opens(setup_browser):
     with allure.step("tap the 'NOT NOW' button when asked to donate"):
         browser.element((AppiumBy.ID, "android:id/button2")).click()
@@ -45,8 +45,8 @@ def test_settings_opens(setup_browser):
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("settings")
-@allure.title("the search field should work")
-def test_settings_opens(setup_browser):
+@allure.title("The search field works")
+def test_search_works(setup_browser):
     with allure.step("tap the 'NOT NOW' button when asked to donate"):
         browser.element((AppiumBy.ID, "android:id/button2")).click()
     with allure.step("tap search icon at the top of the screen"):
