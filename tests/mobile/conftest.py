@@ -1,3 +1,4 @@
+from selene import browser
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
@@ -18,13 +19,13 @@ def setup_browser(request):
         "deviceName": "Google Pixel 3",
 
         # Set URL of the application under test
-        "app": "bs://<app-id>",
+        "app": "bs://4596d0720ffc4b92d7fd6f5ba399273c71eac54c",
 
         # Set other BrowserStack capabilities
         'bstack:options': {
-            "projectName": "First Python project",
-            "buildName": "browserstack-build-1",
-            "sessionName": "BStack first_test",
+            "projectName": "Arxiv Mobile",
+            "buildName": "arxiv-mobile-build-1",
+            "sessionName": "arxiv first_test",
 
             # Set your access credentials
             "userName": os.getenv("BROWSERSTACK_LOGIN"),
@@ -37,29 +38,6 @@ def setup_browser(request):
     driver = webdriver.Remote("http://hub.browserstack.com/wd/hub", options=options)
 
     # версия селена: просто browser.config.driver_options = options
-
-    browser.config.window_width = 1600
-    browser.config.window_height = 1200
-    browser_name = request.config.getoption("--browser")
-    browser_version = request.config.getoption("--browser_version")
-
-    login = os.getenv('SELENOID_LOGIN')
-    pwd = os.getenv('SELENOID_PASSWORD')
-
-    options = Options()
-    selenoid_capabilities = {
-        "browserName": browser_name,
-        "browserVersion": browser_version,
-        "selenoid:options": {
-            "enableVNC": True,
-            "enableVideo": True
-        }
-    }
-    options.capabilities.update(selenoid_capabilities)
-    driver = webdriver.Remote(
-        command_executor=f"https://{login}:{pwd}@selenoid.autotests.cloud/wd/hub",
-        options=options
-    )
 
     browser.config.driver = driver
 

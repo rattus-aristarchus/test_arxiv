@@ -1,35 +1,32 @@
-from appium import webdriver
-from appium.options.android import UiAutomator2Options
+from selene import browser, be
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
-import os
-
-# Options are only available since client version 2.3.0
-# If you use an older client then switch to desired_capabilities
-# instead: https://github.com/appium/python-client/pull/720
+import allure
+from allure_commons.types import Severity
 
 
+XPATH_THREE_DOTS = ("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android"
+                    ".widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/"
+                    "android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout[1]/"
+                    "android.view.ViewGroup/android.support.v7.widget.av/android.widget.ImageView")
+XPATH_SETTINGS = ("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget."
+                  "ListView/android.widget.LinearLayout[1]/android.widget.RelativeLayout/android."
+                  "widget.TextView")
+XPATH_SETTINGS_HEADING = ("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android"
+                          ".widget.FrameLayout/android.widget.LinearLayout/android.view.ViewGroup/"
+                          "android.widget.TextView")
 
 
-# Test case for the BrowserStack sample Android app.
-# If you have uploaded your app, update the test case here.
-# следующие 4 строки это упаковываются в одну строчку селена
-search_element = WebDriverWait(driver, 30).until(
-    EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Search Wikipedia"))
-)
-search_element.click()
-search_input = WebDriverWait(driver, 30).until(
-    EC.element_to_be_clickable(
-        (AppiumBy.ID, "org.wikipedia.alpha:id/search_src_text"))
-)
-search_input.send_keys("BrowserStack")
-# слип с селеном не нужен будет
-time.sleep(5)
-# проверка жуткая - в андроиде это выдаст тупо дивы. нужно найти правильный локатор
-search_results = driver.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")
-assert (len(search_results) > 0)
-
-# Invoke driver.quit() after the test is done to indicate that the test is completed.
-driver.quit()
+@allure.tag("Mobile")
+@allure.severity(severity_level=Severity.NORMAL)
+@allure.label("owner", 'lankinma')
+@allure.feature("settings")
+@allure.title("the settings page should open")
+def test_settings_opens(setup_browser):
+    with allure.step("tap the 'NOT NOW' button when asked to donate"):
+        browser.element((AppiumBy.ID, "android:id/button2")).click()
+    with allure.step("tap the three dots in the upper right corner"):
+        browser.element((AppiumBy.XPATH, XPATH_THREE_DOTS)).click()
+    with allure.step("select 'settings' from the dropdown menu"):
+        browser.element((AppiumBy.XPATH, XPATH_SETTINGS)).click()
+    with allure.step("the settings page should open and its heading should be present"):
+        browser.element((AppiumBy.XPATH, XPATH_SETTINGS_HEADING)).should(be.present)
