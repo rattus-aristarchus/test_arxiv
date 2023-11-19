@@ -17,7 +17,7 @@ def local_browser():
     browser.close()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def setup_browser(request):
     browser.config.window_width = 1600
     browser.config.window_height = 1200
@@ -41,7 +41,6 @@ def setup_browser(request):
         command_executor=f"https://{login}:{pwd}@selenoid.autotests.cloud/wd/hub",
         options=options
     )
-
     browser.config.driver = driver
 
     yield browser

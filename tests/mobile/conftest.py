@@ -1,16 +1,12 @@
 from selene import browser
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
-from appium.webdriver.common.appiumby import AppiumBy
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
 import os
 
 import pytest
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def setup_browser(request):
     options = UiAutomator2Options().load_capabilities({
         # Specify device and os_version for testing
@@ -36,8 +32,6 @@ def setup_browser(request):
     # Initialize the remote Webdriver using BrowserStack remote URL
     # and options defined above
     driver = webdriver.Remote("http://hub.browserstack.com/wd/hub", options=options)
-
-    # версия селена: просто browser.config.driver_options = options
 
     browser.config.driver = driver
 
