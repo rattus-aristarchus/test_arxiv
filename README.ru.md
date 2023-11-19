@@ -6,7 +6,7 @@ ArXiv - сайт, на котором с начала 1990х годов выкл
 
 В двух словах:
 
-![XKCD on the subject](/resources/images/xkcd.png)
+![XKCD on the subject](/resources/images/arxiv_xkcd.png)
 
 
 ## Покрытый функционал:
@@ -21,7 +21,7 @@ ArXiv - сайт, на котором с начала 1990х годов выкл
 В проекте использованы как автоматизированные, так и ручные тесты (тест-кейсы для них хранятся в Allure Testops).
 
 ## Стек технологий:
-<img src="resources/icons/python.svg" height="40" width="40" /><img src="resources/icons/requests.png" height="40" width="40" /><img src="resources/icons/selenium.png" height="40" width="40" /><img src="resources/icons/selene.png" height="40" width="40" /><img src="resources/icons/selenoid.svg" height="40" width="40" /><img src="resources/icons/pytest.svg" height="40" width="40" /><img src="resources/icons/allure_Report.svg" height="40" width="40" /><img src="resources/icons/allure_EE.svg" height="40" width="40" /><img src="resources/icons/jenkins.svg" height="40" width="40" /><img src="resources/icons/jira.svg" height="40" width="40" /><img src="resources/icons/browserstack.svg" height="40" width="40" /><img src="resources/icons/github.svg" height="40" width="40" /><img src="resources/icons/pycharm.svg" height="40" width="40" />
+<img src="resources/icons/python.svg" height="40" width="40" /><img src="resources/icons/selenium.png" height="40" width="40" /><img src="resources/icons/selene.png" height="40" width="40" /><img src="resources/icons/selenoid.svg" height="40" width="40" /><img src="resources/icons/pytest.svg" height="40" width="40" /><img src="resources/icons/allure_Report.svg" height="40" width="40" /><img src="resources/icons/allure_EE.svg" height="40" width="40" /><img src="resources/icons/jenkins.svg" height="40" width="40" /><img src="resources/icons/jira.svg" height="40" width="40" /><img src="resources/icons/browserstack.png" height="40" width="40" /><img src="resources/icons/github.png" height="40" width="40" /><img src="resources/icons/pycharm.png" height="40" width="40" />
 
 ## Локальный запуск
 
@@ -83,4 +83,4 @@ pytest tests
 
 Проект в Allure Testops интегрирован с Jira, в ней заведены задачи по обнаруженным неисправностям ([вот](https://jira.autotests.cloud/browse/HOMEWORK-948) и [вот](https://jira.autotests.cloud/browse/HOMEWORK-963)). В задачах есть ссылки на соответствующие тесты в Testops, и наоборот.
 
-![Jira](resources/images/Jira.png)
+![Jira](resources/images/jira.png)

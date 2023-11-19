@@ -6,7 +6,7 @@ ArXiv is a website that has been allowing free access to scientific articles in 
 
 In a nutshell:
 
-![XKCD on the subject](/resources/images/xkcd.png)
+![XKCD on the subject](/resources/images/arxiv_xkcd.png)
 
 ## Covered functionality:
 
@@ -20,7 +20,7 @@ Two bugs have been discovered, and Jira tickets have been created for both of th
 The project has both manual and automated tests, the former are stored in an Allure Testops project.
 
 ## Tech stack:
-<img src="resources/icons/python.svg" height="40" width="40" /><img src="resources/icons/requests.png" height="40" width="40" /><img src="resources/icons/selenium.png" height="40" width="40" /><img src="resources/icons/selene.png" height="40" width="40" /><img src="resources/icons/selenoid.svg" height="40" width="40" /><img src="resources/icons/pytest.svg" height="40" width="40" /><img src="resources/icons/allure_Report.svg" height="40" width="40" /><img src="resources/icons/allure_EE.svg" height="40" width="40" /><img src="resources/icons/jenkins.svg" height="40" width="40" /><img src="resources/icons/jira.svg" height="40" width="40" /><img src="resources/icons/browserstack.svg" height="40" width="40" /><img src="resources/icons/github.svg" height="40" width="40" /><img src="resources/icons/pycharm.svg" height="40" width="40" />
+<img src="resources/icons/python.svg" height="40" width="40" /><img src="resources/icons/selenium.png" height="40" width="40" /><img src="resources/icons/selene.png" height="40" width="40" /><img src="resources/icons/selenoid.svg" height="40" width="40" /><img src="resources/icons/pytest.svg" height="40" width="40" /><img src="resources/icons/allure_Report.svg" height="40" width="40" /><img src="resources/icons/allure_EE.svg" height="40" width="40" /><img src="resources/icons/jenkins.svg" height="40" width="40" /><img src="resources/icons/jira.svg" height="40" width="40" /><img src="resources/icons/browserstack.png" height="40" width="40" /><img src="resources/icons/github.png" height="40" width="40" /><img src="resources/icons/pycharm.png" height="40" width="40" />
 
 ## Local execution
 
@@ -82,4 +82,4 @@ The Jenkins project is also integrated with an [Allure Testops project](https://
 
 The Allure Testops project is integrated with Jira. Separate issues have been created for each detected bug (see [here](https://jira.autotests.cloud/browse/HOMEWORK-948) and [here](https://jira.autotests.cloud/browse/HOMEWORK-963)). Each issue is linked to an Allure Testops test case, and vice versa.
 
-![Jira](resources/images/Jira.png)
+![Jira](resources/images/jira.png)
