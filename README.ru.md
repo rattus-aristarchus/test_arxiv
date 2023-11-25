@@ -68,12 +68,15 @@ pytest tests
 Проект Jenkins так же интегрирован с [проектом Allure Testops](https://allure.autotests.cloud/project/3759/dashboards), который хранит результаты всех прошлых запусков. Зачем? Чтобы иметь:
 
 - отображение ручных и автоматизированных тест-кейсов в одном интерфейсе, с представлением их общего покрытия функциональности:
+
 ![Manual and automated test cases in Allure Testops](resources/images/allure_testops_manual_and_automated.png)
 
 - дефекты, помогающие быстро сортировать ошибки в тестах:
+
 ![Allure Testops dashboard](resources/images/allure_testops_defects.png)
 
 - общую статистику выполнения:
+
 ![Allure Testops dashboard](resources/images/allure_testops_dashboard.png)
 
 ### Jira

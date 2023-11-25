@@ -67,12 +67,15 @@ The "Suites" tab has a detailed representation of how each test was executed, wi
 The Jenkins project is also integrated with an [Allure Testops project](https://allure.autotests.cloud/project/3759/dashboards), which stores test results for all previous launches of the project. Why would we need that? 
 
 -  to have manual and automated test cases in the same interface, showing their collective coverage of features:
+
 ![Manual and automated test cases in Allure Testops](resources/images/allure_testops_manual_and_automated.png)
 
 - to have defects that help categorize and quickly sort test failures:
+
 ![Allure Testops dashboard](resources/images/allure_testops_defects.png)
 
 - to have aggregated statistics on test runs:
+
 ![Allure Testops dashboard](resources/images/allure_testops_dashboard.png)
 
 ### Jira
