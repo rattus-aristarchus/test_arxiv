@@ -16,7 +16,7 @@ MISWRITTEN_ID = "hep-th/99120120000000000"
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
 @allure.feature("main page")
-@allure.title("Main page")
+@allure.title("Main page opens")
 def test_main(setup_browser):
     page = MainPage()
     page.open()

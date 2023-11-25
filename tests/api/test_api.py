@@ -75,7 +75,7 @@ def test_query_max_results(max_res):
 # for performance reasons, arxiv's maximum number of results
 # returned from a single call (max_results) is limited to 30000,
 # and they frown upon calls of over 1000
-def test_query_max_results(max_res):
+def test_query_max_results_unacceptable(max_res):
     with allure.step("send a request"):
         response = query(name=NAME, max_res=max_res)
         attach_code(response.status)
@@ -115,7 +115,7 @@ def test_query_start():
 @allure.feature("query method")
 @allure.title("Check unacceptable values for the start parameter")
 @pytest.mark.parametrize("start", ["-1", "notaninteger"])
-def test_query_start(start):
+def test_query_start_unacceptable(start):
     with allure.step("send the request"):
         response = query(name=NAME, start=start, max_res="1")
         attach_code(response.status)
