@@ -1,4 +1,4 @@
-# ПРИМЕР ПРОЕКТА ПО ТЕСТИРОВАНИЮ UI И API САЙТА [ARXIV](https://arxiv.org/) И МОБИЛЬНОГО ПРИЛОЖЕНИЯ [ARXIV MOBILE](https://f-droid.org/ru/packages/com.commonsware.android.arXiv/)
+# ПРИМЕР ПРОЕКТА ПО ТЕСТИРОВАНИЮ UI И API САЙТА [ARXIV](https://arxiv.org/)
 
 ArXiv - сайт, на котором с начала 1990х годов выкладывают в открытом доступе статьи по естественным наукам.
 
