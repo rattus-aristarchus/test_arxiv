@@ -19,6 +19,8 @@ ArXiv - сайт, на котором с начала 1990х годов выкл
 
 В проекте использованы как автоматизированные, так и ручные тесты (тест-кейсы для них хранятся в Allure Testops).
 
+В [отдельном проекте](https://github.com/rattus-aristarchus/test-arxiv-mobile) находятся тесты для мобильного приложения arXiv mobile.
+
 ## Стек технологий:
 <img src="resources/icons/python.svg" height="40" width="40" /><img src="resources/icons/selenium.png" height="40" width="40" /><img src="resources/icons/selene.png" height="40" width="40" /><img src="resources/icons/selenoid.svg" height="40" width="40" /><img src="resources/icons/pytest.svg" height="40" width="40" /><img src="resources/icons/allure_Report.svg" height="40" width="40" /><img src="resources/icons/allure_EE.svg" height="40" width="40" /><img src="resources/icons/jenkins.svg" height="40" width="40" /><img src="resources/icons/jira.svg" height="40" width="40" /><img src="resources/icons/browserstack.png" height="40" width="40" /><img src="resources/icons/github.png" height="40" width="40" /><img src="resources/icons/pycharm.png" height="40" width="40" />
 

@@ -18,6 +18,8 @@ Two bugs have been discovered, and Jira tickets have been created for both of th
 
 The project has both manual and automated tests, the former are stored in an Allure Testops project.
 
+A [separate project](https://github.com/rattus-aristarchus/test-arxiv-mobile) hosts tests for the arXiv android app.
+
 ## Tech stack:
 <img src="resources/icons/python.svg" height="40" width="40" /><img src="resources/icons/selenium.png" height="40" width="40" /><img src="resources/icons/selene.png" height="40" width="40" /><img src="resources/icons/selenoid.svg" height="40" width="40" /><img src="resources/icons/pytest.svg" height="40" width="40" /><img src="resources/icons/allure_Report.svg" height="40" width="40" /><img src="resources/icons/allure_EE.svg" height="40" width="40" /><img src="resources/icons/jenkins.svg" height="40" width="40" /><img src="resources/icons/jira.svg" height="40" width="40" /><img src="resources/icons/github.png" height="40" width="40" /><img src="resources/icons/pycharm.png" height="40" width="40" />
 
