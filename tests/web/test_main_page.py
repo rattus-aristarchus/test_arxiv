@@ -49,12 +49,9 @@ def test_search_by_id(setup_browser, query):
 @allure.label("owner", "allure8")
 @allure.feature("simple search")
 def test_default_search(setup_browser):
-    with allure.step("open the https://arxiv.org webpage"):
-        page = MainPage()
-        page.open()
-    with allure.step("enter the software testing search term"):
-        page.type_search_query("software testing")
-    with allure.step("click search"):
-        page.search()
+    page = MainPage()
+    page.open()
+    page.type_search_query("software testing")
+    page.search()
     with allure.step("check the first 5 results that hey have either software or testing in them"):
         pass

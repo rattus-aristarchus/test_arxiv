@@ -25,7 +25,7 @@ def query(name="", id=None, max_res=None, start=None):
 
 
 def attach_code(code, name="status code"):
-    allure.attach(str(code), name=name, attachment_type=AttachmentType.TEXT)
+    allure.attach(str(code), name=name, attachment_type=AttachmentType.TEXT, extension='.txt')
 
 
 @allure.tag("API")

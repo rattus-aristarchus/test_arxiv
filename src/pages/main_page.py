@@ -13,7 +13,6 @@ class MainPage(Page):
     @allure.step("open the https://arxiv.org page")
     def open(self):
         self.open_url(self.url)
-        attach.add_html(browser)
 
     @allure.step("type {query} in the search field")
     def type_search_query(self, query):

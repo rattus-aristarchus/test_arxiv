@@ -1,6 +1,8 @@
 import allure
 from selene import browser, have, command
 
+import tests.attach as attach
+
 
 class Page:
 
@@ -13,8 +15,10 @@ class Page:
 
     @allure.step("page url should be {url}")
     def should_be_at_url(self, url):
+        attach.add_text(browser, url)
         browser.should(have.url(url))
 
     @allure.step("should not recognize article identifier")
     def should_not_recognize_article_id(self):
+        attach.add_screenshot(browser)
         browser.element("#content").element("h1").should(have.text("not recognized"))
