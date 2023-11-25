@@ -17,7 +17,7 @@ def local_browser():
     browser.close()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def setup_browser(request):
     browser.config.window_width = 1600
     browser.config.window_height = 1200

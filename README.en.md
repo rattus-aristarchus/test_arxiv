@@ -13,14 +13,13 @@ In a nutshell:
 - Simple search
 - Advanced search (https://arxiv.org/search/advanced) by field, tag, and date
 - The 'query' API method, which returns an Atom feed
-- The first page of the mobile app
 
 Two bugs have been discovered, and Jira tickets have been created for both of them ([this](https://jira.autotests.cloud/browse/HOMEWORK-963) and [this](https://jira.autotests.cloud/browse/HOMEWORK-948)).
 
 The project has both manual and automated tests, the former are stored in an Allure Testops project.
 
 ## Tech stack:
-<img src="resources/icons/python.svg" height="40" width="40" /><img src="resources/icons/selenium.png" height="40" width="40" /><img src="resources/icons/selene.png" height="40" width="40" /><img src="resources/icons/selenoid.svg" height="40" width="40" /><img src="resources/icons/pytest.svg" height="40" width="40" /><img src="resources/icons/allure_Report.svg" height="40" width="40" /><img src="resources/icons/allure_EE.svg" height="40" width="40" /><img src="resources/icons/jenkins.svg" height="40" width="40" /><img src="resources/icons/jira.svg" height="40" width="40" /><img src="resources/icons/browserstack.png" height="40" width="40" /><img src="resources/icons/github.png" height="40" width="40" /><img src="resources/icons/pycharm.png" height="40" width="40" />
+<img src="resources/icons/python.svg" height="40" width="40" /><img src="resources/icons/selenium.png" height="40" width="40" /><img src="resources/icons/selene.png" height="40" width="40" /><img src="resources/icons/selenoid.svg" height="40" width="40" /><img src="resources/icons/pytest.svg" height="40" width="40" /><img src="resources/icons/allure_Report.svg" height="40" width="40" /><img src="resources/icons/allure_EE.svg" height="40" width="40" /><img src="resources/icons/jenkins.svg" height="40" width="40" /><img src="resources/icons/jira.svg" height="40" width="40" /><img src="resources/icons/github.png" height="40" width="40" /><img src="resources/icons/pycharm.png" height="40" width="40" />
 
 ## Local execution
 
@@ -29,10 +28,8 @@ To run the tests locally, do the following:
 - clone the remote repository `https://github.com/rattus-aristarchus/test_arxiv.git`
 - create an `.env` file with environment variables. The file should contain the following variables:
 ```
-SELENOID_LOGIN=логин для сервера на selenoid
-SELENOID_PASSWORD=пароль
-BROWSERSTACK_LOGIN=логин для browserstack (для запуска мобильных тестов)
-BROWSERSTACK_PASSWORD=пароль для browserstack
+SELENOID_LOGIN=your login for the selenoid server
+SELENOID_PASSWORD=your password for the selenoid server
 ```
 - execute the following commands in the root folder of the project:
 ```sh
@@ -65,7 +62,7 @@ The "Suites" tab has a detailed representation of how each test was executed, wi
 ![Allure Report](resources/images/allure_report_tree.png)
 
 
-### Отчеты в Allure Testops
+### Allure Testops
 
 The Jenkins project is also integrated with an [Allure Testops project](https://allure.autotests.cloud/project/3759/dashboards), which stores test results for all previous launches of the project. Why would we need that? 
 

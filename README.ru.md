@@ -14,7 +14,6 @@ ArXiv - сайт, на котором с начала 1990х годов выкл
 - Простой поиск на сайте
 - Расширенный поиск (https://arxiv.org/search/advanced) по отдельным полям, темам и датам
 - Метод query в API-запросах, возвращающий Atom-фид
-- Первая страница мобильного приложения
 
 Обнаружено несколько неисправностей, по которым заведены тикеты в Jira ([раз](https://jira.autotests.cloud/browse/HOMEWORK-963) и [два](https://jira.autotests.cloud/browse/HOMEWORK-948)). 
 
@@ -30,8 +29,6 @@ ArXiv - сайт, на котором с начала 1990х годов выкл
 - клонировать репозиторий `https://github.com/rattus-aristarchus/test_arxiv.git`
 - создать файл `.env` с переменными среды. Файл должен содержать следующие переменные:
 ```
-SELENOID_LOGIN=логин для сервера на selenoid
-SELENOID_PASSWORD=пароль
 BROWSERSTACK_LOGIN=логин для browserstack (для запуска мобильных тестов)
 BROWSERSTACK_PASSWORD=пароль для browserstack
 ```
