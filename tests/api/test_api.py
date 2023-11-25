@@ -26,10 +26,6 @@ def query(name="", id=None, max_res=None, start=None):
     return feedparser.parse(url)
 
 
-def attach_code(code, name="status code"):
-    allure.attach(str(code), name=name, attachment_type=AttachmentType.TEXT, extension='.txt')
-
-
 @allure.tag("API")
 @allure.severity(severity_level=Severity.CRITICAL)
 @allure.label("owner", 'lankinma')
@@ -38,7 +34,7 @@ def attach_code(code, name="status code"):
 def test_search_query():
     with allure.step("send a request"):
         response = query(NAME)
-        attach_code(response.status)
+        attach.text(str(response.status), "status code")
 
     with allure.step("check status code"):
         assert response.status == 200
@@ -58,7 +54,8 @@ def test_search_query():
 def test_query_max_results(max_res):
     with allure.step("send a request"):
         response = query(name=NAME, max_res=max_res)
-        attach_code(response.status)
+        attach.text(str(response.status), "status code")
+        attach.text(str(response.entries), "response content")
 
     with allure.step("check status code"):
         assert response.status == 200
@@ -78,7 +75,7 @@ def test_query_max_results(max_res):
 def test_query_max_results_unacceptable(max_res):
     with allure.step("send a request"):
         response = query(name=NAME, max_res=max_res)
-        attach_code(response.status)
+        attach.text(str(response.status), "status code")
 
     with allure.step("check status code"):
         assert response.status == 400
@@ -92,13 +89,13 @@ def test_query_max_results_unacceptable(max_res):
 def test_query_start():
     with allure.step("send first request"):
         response = query(name=NAME, start="0", max_res="1")
-        attach_code(response.status, name="first request status")
-        attach.add_text(str(response.entries))
+        attach.text(str(response.status), "status code")
+        attach.text(str(response.entries), "response content")
 
     with allure.step("send second request"):
         response1 = query(name=NAME, start="1", max_res="1")
-        attach_code(response.status, name="second request status")
-        attach.add_text(str(response1.entries))
+        attach.text(str(response.status), "status code")
+        attach.text(str(response1.entries), "response content")
 
     with allure.step("check status code for first request"):
         assert response.status == 200
@@ -118,7 +115,7 @@ def test_query_start():
 def test_query_start_unacceptable(start):
     with allure.step("send the request"):
         response = query(name=NAME, start=start, max_res="1")
-        attach_code(response.status)
+        attach.text(str(response.status), "status code")
 
     with allure.step("check status code"):
         assert response.status == 400
@@ -132,7 +129,8 @@ def test_query_start_unacceptable(start):
 def test_id_list():
     with allure.step("send the request"):
         response = query(id=ID)
-        attach_code(response.status)
+        attach.text(str(response.status), "status code")
+        attach.text(str(response.entries), "response content")
 
     with allure.step("check status code"):
         assert response.status == 200
@@ -150,7 +148,7 @@ def test_id_list():
 def test_id_list_with_name():
     with allure.step("send the request"):
         response = query(name=BAD_NAME, id=ID)
-        attach_code(response.status)
+        attach.text(str(response.status), "status code")
 
     with allure.step("check status code"):
         assert response.status == 200

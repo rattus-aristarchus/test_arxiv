@@ -57,41 +57,41 @@ class AdvancedSearchPage(Page):
 
     @allure.step("the results page should have results")
     def results_should_exist(self):
-        attach.add_screenshot(browser)
+        attach.screenshot(browser)
         browser.element(".arxiv-result").should(be.existing)
 
     @allure.step("the results page should appear, but with no results")
     def should_not_have_results(self):
-        attach.add_screenshot(browser)
+        attach.screenshot(browser)
         browser.element(".arxiv-result").should(be.absent)
         browser.element('[class="title is-clearfix"]').should(have.text("no results"))
 
     # TODO: this should react to any authors field, not just the first one
     @allure.step("any of the 'authors' field of results should contain {author}")
     def results_should_have_author(self, author):
-        attach.add_html(browser)
+        attach.html(browser)
         browser.element(".authors").should(have.text(author))
 
     @allure.step("all 'tags' fields should have tag {tag}")
     def all_results_should_have_tag(self, tag):
-        attach.add_html(browser)
+        attach.html(browser)
         for element in browser.all(".tags.is-inline-block"):
             element.should(have.text(tag))
 
     @allure.step("'tags' fields should only have the tag {tag}")
     def all_results_should_only_have_tag(self, tag):
-        attach.add_html(browser)
+        attach.html(browser)
         for tags in browser.all(".tags.is-inline-block"):
             for tag_element in tags.all(".tag.is-small.tooltip.is-tooltip-top"):
                 tag_element.should(have.text(tag))
 
     @allure.step("the 'Submitted' fields should only contain year {year}")
     def all_results_should_only_have_year(self, year):
-        attach.add_html(browser)
+        attach.html(browser)
         for result in browser.all(".arxiv-result"):
             result.element('p.is-size-7').should(have.text(year))
 
     @allure.step("a warning should be displayed")
     def should_display_warning(self):
-        attach.add_html(browser)
+        attach.html(browser)
         browser.element('div.help.is-warning').should(be.present)

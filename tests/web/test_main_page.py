@@ -20,7 +20,7 @@ MISWRITTEN_ID = "hep-th/99120120000000000"
 def test_main(setup_browser):
     page = MainPage()
     page.open()
-    attach.add_html(setup_browser)
+    attach.html(setup_browser)
 
 
 @allure.tag("UI")
