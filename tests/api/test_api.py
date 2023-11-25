@@ -5,6 +5,8 @@ import allure
 from allure_commons.types import Severity, AttachmentType
 import feedparser
 
+import tests.attach as attach
+
 
 NAME = "all:electron"
 BAD_NAME = "all:gibberishgibberishgibberish"
@@ -91,10 +93,12 @@ def test_query_start():
     with allure.step("send first request"):
         response = query(name=NAME, start="0", max_res="1")
         attach_code(response.status, name="first request status")
+        attach.add_text(str(response.entries))
 
     with allure.step("send second request"):
         response1 = query(name=NAME, start="1", max_res="1")
         attach_code(response.status, name="second request status")
+        attach.add_text(str(response1.entries))
 
     with allure.step("check status code for first request"):
         assert response.status == 200
@@ -128,6 +132,7 @@ def test_query_start(start):
 def test_id_list():
     with allure.step("send the request"):
         response = query(id=ID)
+        attach_code(response.status)
 
     with allure.step("check status code"):
         assert response.status == 200
@@ -145,6 +150,7 @@ def test_id_list():
 def test_id_list_with_name():
     with allure.step("send the request"):
         response = query(name=BAD_NAME, id=ID)
+        attach_code(response.status)
 
     with allure.step("check status code"):
         assert response.status == 200

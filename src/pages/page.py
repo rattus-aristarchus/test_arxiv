@@ -15,7 +15,7 @@ class Page:
 
     @allure.step("page url should be {url}")
     def should_be_at_url(self, url):
-        attach.add_text(browser, url)
+        attach.add_text(url)
         browser.should(have.url(url))
 
     @allure.step("should not recognize article identifier")

@@ -25,5 +25,5 @@ def add_video(browser):
     allure.attach(html, 'video_' + browser.driver.session_id, AttachmentType.HTML, '.html')
 
 
-def add_text(browser, text):
+def add_text(text):
     allure.attach(text, 'text', AttachmentType.TEXT, '.txt')
