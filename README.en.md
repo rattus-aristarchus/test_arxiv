@@ -1,4 +1,4 @@
-# A SAMPLE TEST BASE FOR THE [ARXIV](https://arxiv.org/) WEB-SITE AND THE [ARXIV MOBILE](https://f-droid.org/ru/packages/com.commonsware.android.arXiv/) APP
+# A SAMPLE TEST BASE FOR THE [ARXIV](https://arxiv.org/) WEB-SITE
 
 ArXiv is a website that has been allowing free access to scientific articles in certain fields since the beginning of 1990s. 
 
