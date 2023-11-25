@@ -3,6 +3,7 @@ from allure_commons.types import Severity
 import pytest
 
 from src.pages.main_page import MainPage
+import tests.attach as attach
 
 
 PAPER_URL = "https://arxiv.org/abs/hep-th/9912012"
@@ -19,6 +20,7 @@ MISWRITTEN_ID = "hep-th/99120120000000000"
 def test_main(setup_browser):
     page = MainPage()
     page.open()
+    attach.add_html(setup_browser)
 
 
 @allure.tag("UI")
@@ -39,3 +41,20 @@ def test_search_by_id(setup_browser, query):
         page.should_not_recognize_article_id()
     else:
         page.should_be_at_url(PAPER_URL)
+
+
+@allure.id("27108")
+@allure.title("Search via default search field")
+@allure.tag("UI")
+@allure.label("owner", "allure8")
+@allure.feature("simple search")
+def test_default_search(setup_browser):
+    with allure.step("open the https://arxiv.org webpage"):
+        page = MainPage()
+        page.open()
+    with allure.step("enter the software testing search term"):
+        page.type_search_query("software testing")
+    with allure.step("click search"):
+        page.search()
+    with allure.step("check the first 5 results that hey have either software or testing in them"):
+        pass
