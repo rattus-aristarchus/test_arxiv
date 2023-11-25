@@ -20,4 +20,3 @@ class MainPage(Page):
     @allure.step("click the 'Search' button")
     def search(self):
         browser.element("button.button.is-small.is-cul-darker").click()
-

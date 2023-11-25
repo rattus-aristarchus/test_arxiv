@@ -15,7 +15,6 @@ allure-pytest = "2.13.2"
 requests = "2.31.0"
 lxml = "4.9.3"
 feedparser = "6.0.10"
-Appium-Python-Client = "2.11.1"
 
 [build-system]
 requires = ["poetry-core"]
