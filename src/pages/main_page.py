@@ -2,6 +2,7 @@ import allure
 from selene import browser, by, have, be
 
 from src.pages.page import Page
+import tests.attach as attach
 
 
 class MainPage(Page):
@@ -12,6 +13,7 @@ class MainPage(Page):
     @allure.step("open the https://arxiv.org page")
     def open(self):
         self.open_url(self.url)
+        attach.add_html(browser)
 
     @allure.step("type {query} in the search field")
     def type_search_query(self, query):
