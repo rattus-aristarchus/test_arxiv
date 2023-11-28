@@ -30,8 +30,8 @@ To run the tests locally, do the following:
 - clone the remote repository `https://github.com/rattus-aristarchus/test_arxiv.git`
 - create an `.env` file with environment variables. The file should contain the following variables:
 ```
-SELENOID_LOGIN=your login for the selenoid server
-SELENOID_PASSWORD=your password for the selenoid server
+SELENOID_LOGIN="your login for the selenoid server"
+SELENOID_PASSWORD="your password for the selenoid server"
 ```
 - execute the following commands in the root folder of the project:
 ```sh
